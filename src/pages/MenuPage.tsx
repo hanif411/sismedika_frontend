@@ -6,7 +6,7 @@ import { MenuCard } from '@/components/MenuCard';
 import { useCheckout } from '@/hooks/useCheckout';
 
 const MenuPage = () => {
-  const { tableId, items, addToCart, updateQuantity, removeFromCart, resetCart } = useCartStore();
+  const { tableId, items, addToCart, updateQuantity, removeFromCart } = useCartStore();
   const { foods, loading, search, setSearch } = useMenu();
 
   const totalPrice = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
