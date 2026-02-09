@@ -1,73 +1,66 @@
-# React + TypeScript + Vite
+# Frontend Sismedika
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplikasi Frontend untuk manajemen pesanan makanan (Sismedika), dibangun dengan **React**, **Vite**, dan **TailwindCSS**.
 
-Currently, two official plugins are available:
+## 📋 Prasyarat
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Pastikan Anda telah menginstal:
+- [Node.js](https://nodejs.org/) (versi LTS, minimal v18)
+- [NPM](https://www.npmjs.com/) (biasanya sudah termasuk dalam Node.js)
 
-## React Compiler
+## 🚀 Cara Menjalankan
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Ikuti langkah-langkah berikut untuk menjalankan aplikasi di komputer lokal Anda:
 
-## Expanding the ESLint configuration
+1.  **Masuk ke direktori frontend**:
+    ```bash
+    cd frontend
+    ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+2.  **Install dependensi**:
+    Jalankan perintah ini untuk mengunduh semua library yang dibutuhkan:
+    ```bash
+    npm install
+    ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+3.  **Konfigurasi API (Opsional)**:
+    Secara default, aplikasi akan mencoba menghubungi backend di `http://localhost:8000`. 
+    Jika backend Anda berjalan di alamat berbeda, pastikan untuk menyesuaikan konfigurasi di `src/api/api.ts` atau buat file `.env` (jika didukung).
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+4.  **Jalankan Mode Pengembangan**:
+    ```bash
+    npm run dev
+    ```
+    Buka browser dan akses URL yang muncul (biasanya `http://localhost:5173`).
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠️ Script yang Tersedia
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- `npm run dev`: Menjalankan server pengembangan dengan Hot Module Replacement (HMR).
+- `npm run build`: Mengompilasi aplikasi untuk produksi ke folder `dist`.
+- `npm run preview`: Meninjau hasil build produksi secara lokal.
+- `npm run lint`: Memeriksa kode untuk kesalahan sintaks dan gaya penulisan.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📂 Struktur Proyek
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **`src/api`**: Konfigurasi koneksi ke backend (Axios).
+- **`src/components`**: Komponen UI yang dapat digunakan kembali (Tombol, Input, Modal, dll).
+- **`src/pages`**: Halaman-halaman utama aplikasi (Login, Dashboard, Menu, dll).
+- **`src/store`**: Manajemen state global menggunakan **Zustand**.
+- **`src/layouts`**: Layout utama aplikasi (misal: Sidebar, Navbar).
+- **`src/types`**: Definisi tipe TypeScript.
+
+## 🔐 Akun Default (Backend)
+
+Pastikan backend sudah berjalan dan di-seed. Gunakan akun berikut untuk login:
+- **Kasir:** `hanifkasir@mail.com` / `password`
+- **Pelayan:** `hanifwaiter@mail.com` / `password`
+
+## 🎨 Teknologi
+
+- **React 19**: Library UI utama.
+- **Vite**: Build tool super cepat.
+- **TailwindCSS 4**: Framework CSS utility-first.
+- **Zustand**: State management yang ringan.
+- **Axios**: HTTP Client untuk request ke API.
+- **Lucide React**: Ikon open-source.
+- **Shadcn UI / Radix UI**: Komponen dasar UI yang aksesibel.
