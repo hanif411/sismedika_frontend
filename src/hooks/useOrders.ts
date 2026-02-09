@@ -9,7 +9,6 @@ export const useOrders = () => {
     const fetchOrders = async () => {
         try {
             const res = await api.get('/orders');
-            // Urutkan: yang 'open' di atas, baru yang 'completed'
             const sortedData = res.data.data.sort((a: any, b: any) => 
                 a.status === 'open' ? -1 : 1
             );
@@ -25,7 +24,7 @@ export const useOrders = () => {
         if (!window.confirm('Pesanan ini sudah selesai & meja siap dikosongkan?')) return;
         try {
             await api.patch(`/orders/${orderId}/complete`);
-            await fetchOrders(); // Refresh data setelah sukses
+            await fetchOrders(); 
             return { success: true };
         } catch (err) {
             return { success: false, msg: 'Gagal update status!' };

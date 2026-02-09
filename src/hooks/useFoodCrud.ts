@@ -21,9 +21,9 @@ export const useFoodCrud = () => {
     const saveFood = async (id: number | null, data: any) => {
         try {
             if (id) {
-                await api.put(`/food/${id}`, data); // Update
+                await api.put(`/food/${id}`, data); 
             } else {
-                await api.post('/food', data); // Create
+                await api.post('/food', data);
             }
             await fetchFoods();
             return { success: true };

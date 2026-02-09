@@ -5,15 +5,13 @@ import { useNavigate, useLocation } from 'react-router-dom';
 export const AppLayout = ({ children }: { children: React.ReactNode }) => {
   const { logout } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation(); // Buat cek path aktif
-
+  const location = useLocation(); 
   const handleLogout = () => {
     if(window.confirm('Yakin mau keluar?')) {
       logout();
     }
   };
 
-  // Helper biar kodenya gak berulang (DRY - Don't Repeat Yourself)
   const navItems = [
     { label: 'Meja', path: '/tables', icon: <LayoutDashboard size={20}/> },
     { label: 'Pesanan', path: '/orders', icon: <UtensilsCrossed size={20}/> },
